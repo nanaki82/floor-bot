@@ -24,11 +24,11 @@ const mainLoop = (bot: Telegraf<Context<Update>>) => {
         const price = await getFloorPrice(slug);
 
         if (price === undefined) {
-          return;
+          continue;
         }
 
         if (Date.now() <= muteUntil) {
-          return;
+          continue;
         }
 
         if (price > max || price < min) {
